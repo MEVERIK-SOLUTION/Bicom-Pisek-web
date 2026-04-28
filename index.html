@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="cs" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- === SEO A META TAGY === -->
+    <title>Bicom Písek – Prémiová biorezonance | Lenka Limpouchová</title>
+    <meta name="description" content="Centrum celostního zdraví v Písku. Pomáháme s odvykáním kouření, alergiemi a bolestmi pomocí neinvazivní biorezonance Bicom Optima. Zarezervujte si termín.">
+    <meta name="keywords" content="Bicom Písek, biorezonance Písek, odvykání kouření, léčba alergií, Lenka Limpouchová, alternativní medicína, Bicom Optima">
+    <meta name="author" content="Lenka Limpouchová">
+    
+    <!-- === OPEN GRAPH (Pro Facebook a sociální sítě) === -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bicompisek.cz/"> <!-- Upraví se na reálnou doménu -->
+    <meta property="og:title" content="Bicom Písek – Najděte zpět svou rovnováhu">
+    <meta property="og:description" content="Jemná a neinvazivní biorezonance pro odvykání kouření, řešení alergií a podporu přirozené imunity.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1545205597-3d9d02c29597?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"> <!-- Zde pak přijde fotka ordinace -->
+    
+    <!-- === FAVICON (Placeholder) === -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌊</text></svg>">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Playfair Display', 'serif'] },
+                    colors: { brand: { 50: '#f0fdfa', 100: '#ccfbf1', 500: '#14b8a6', 600: '#0d9488', 700: '#0f766e', 900: '#134e4a' } },
+                    boxShadow: { 'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)', 'ai': '0 0 20px rgba(13, 148, 136, 0.3)' }
+                }
+            }
+        }
+    </script>
+    <style>
+        input[type="date"]::-webkit-calendar-picker-indicator { cursor: pointer; opacity: 0.6; transition: 0.2s; }
+        input[type="date"]::-webkit-calendar-picker-indicator:hover { opacity: 1; }
+        @keyframes bounce-soft { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+        .typing-dot { animation: bounce-soft 1.4s infinite ease-in-out both; }
+        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+        #chat-messages::-webkit-scrollbar { width: 6px; }
+        #chat-messages::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50 antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- COOKIE LIŠTA (Přidáno pro produkci) -->
+    <div id="cookie-banner" class="fixed bottom-0 left-0 w-full bg-gray-900 text-white z-[60] transform transition-transform duration-500 translate-y-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="text-sm text-gray-300">
+                Tento web používá soubory cookies pro zajištění správného fungování rezervačního systému a analýzu návštěvnosti. 
+                <a href="#" class="text-brand-400 hover:text-brand-300 underline">Více informací</a>.
+            </div>
+            <div class="flex gap-3 flex-shrink-0">
+                <button id="cookie-decline" class="px-4 py-2 text-sm text-gray-300 hover:text-white transition">Odmítnout</button>
+                <button id="cookie-accept" class="px-5 py-2 text-sm bg-brand-600 hover:bg-brand-700 text-white rounded-lg font-medium transition">Rozumím a přijímám</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigace -->
+    <nav class="fixed w-full z-40 bg-white/80 backdrop-blur-lg border-b border-gray-100 shadow-sm transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="w-10 h-10 bg-gradient-to-br from-brand-400 to-brand-600 rounded-xl flex items-center justify-center text-white shadow-md">
+                        <i data-lucide="waves" class="w-6 h-6"></i>
+                    </div>
+                    <span class="font-serif font-bold text-2xl text-gray-900 tracking-tight">Bicom<span class="text-brand-600 italic">Písek</span></span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#sluzby" class="text-gray-600 hover:text-brand-600 font-medium transition">Služby</a>
+                    <a href="#o-bicomu" class="text-gray-600 hover:text-brand-600 font-medium transition">O metodě</a>
+                    <a href="#cenik" class="text-gray-600 hover:text-brand-600 font-medium transition">Ceník</a>
+                    <a href="#rezervace" class="bg-brand-600 hover:bg-brand-700 text-white px-6 py-2.5 rounded-full font-medium transition-all duration-300 shadow-[0_4px_14px_0_rgba(13,148,136,0.39)] hover:-translate-y-0.5">
+                        Rezervovat termín
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Zbytek struktury z předchozí verze (Hero, Služby, O Metodě, Ceník, Rezervace, AI Chat) zůstává identický. -->
+    <!-- Pro zachování čistoty repozitáře sem dávám zkrácenou placeholder verzi obsahu, 
+         do svého VS Code zkopíruješ obsah `<body>` z V3 a nahradíš to tímto. -->
+         
+    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="" class="w-full h-full object-cover transform scale-105 filter brightness-95">
+            <div class="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-transparent md:to-white/40"></div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="max-w-2xl bg-white/50 backdrop-blur-xl p-8 md:p-12 rounded-3xl border border-white/60 shadow-glass" data-aos="fade-up" data-aos-duration="1000">
+                <div class="flex items-center gap-2 mb-6">
+                    <span class="flex h-3 w-3 relative">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-brand-500"></span>
+                    </span>
+                    <span class="text-brand-900 text-sm font-semibold tracking-wider uppercase">Centrum celostního zdraví</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-gray-900 leading-tight mb-6">
+                    Najděte příčinu. <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-brand-400 italic">Obnovte rovnováhu.</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-700 mb-8 font-light leading-relaxed">
+                    Spojujeme moderní technologii Bicom Optima s celostním přístupem k tělu. Specializujeme se na alergie, odvykání kouření a hloubkovou detoxikaci organismu v Písku.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#rezervace" class="flex justify-center items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white px-8 py-4 rounded-full font-medium transition duration-300 shadow-lg text-lg group">
+                        Zobrazit volné termíny <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Příklad Footeru a skriptů -->
+    <footer class="bg-gray-950 text-gray-400 py-12 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
+            <p>&copy; 2026 Bicom Písek - Lenka Limpouchová. Všechna práva vyhrazena.</p>
+            <div class="flex gap-4">
+                <a href="#" class="hover:text-white transition">Ochrana osobních údajů (GDPR)</a>
+                <a href="#" class="hover:text-white transition">Obchodní podmínky</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        AOS.init({ once: true, offset: 50 });
+
+        // --- COOKIE LOGIKA ---
+        const cookieBanner = document.getElementById('cookie-banner');
+        
+        // Zkontrolovat, zda už uživatel klikl v minulosti
+        if (!localStorage.getItem('cookieConsent')) {
+            setTimeout(() => {
+                cookieBanner.classList.remove('translate-y-full');
+            }, 1500); // Ukáže se 1.5s po načtení stránky
+        }
+
+        document.getElementById('cookie-accept').addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'accepted');
+            cookieBanner.classList.add('translate-y-full');
+            // ZDE Mikeš vloží svůj kód pro spuštění Google/FB pixelů
+        });
+
+        document.getElementById('cookie-decline').addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'declined');
+            cookieBanner.classList.add('translate-y-full');
+        });
+    </script>
+</body>
+</html>
