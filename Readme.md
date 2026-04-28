@@ -1,12 +1,69 @@
-Bicom Písek - Rezervační web & EkosystémTento repozitář obsahuje zdrojové kódy pro webovou prezentaci a rezervační ekosystém terapeutky Lenky Limpouchové (Bicom Optima Písek).Projekt je postaven přesně podle vnitrofiremního Hybridního technicko-praktického workflow.🏗 Technická Architektura (Cloudflare-only stack)Frontend: HTML5, Tailwind CSS, JavaScript (Nasazeno na Cloudflare Pages)Backend API (Plánováno): Cloudflare Workers (zpracování rezervací)Databáze (Plánováno): Cloudflare D1 (SQLite na edge)AI Asistent: Cloudflare Workers AI modelÚložiště: Cloudflare R2 (Pro statické obrázky a multimédia)📁 Struktura repozitáře (Návrh)Tento repozitář je připraven na růst od statického webu k full-stack aplikaci:/
-├── public/                 # Zde žije veškerý frontendový kód (Bude nasazeno na CF Pages)
-│   ├── index.html          # Hlavní prezentační stránka s formulářem
-│   ├── assets/             # Obrázky, ikony a favicon (Nutno doplnit reálné foto)
-│   └── css/                # Budoucí kompilovaný Tailwind CSS (pokud opustíme CDN)
-├── functions/              # Budoucí Cloudflare Workers pro API (Rezervace, AI, Emaily)
-│   ├── api/book.js         # Endpoint pro zpracování rezervačního formuláře
-│   └── api/chat.js         # Endpoint pro komunikaci s Workers AI
-├── .gitignore
-├── package.json            # Pro budoucí správu NPM balíčků (Tailwind build)
-└── README.md
-🚀 Lokální vývoj (Pro kolegy)Projekt zatím běží čistě na frontendu přes CDN (nepotřebuje složitý build proces).Naklonuj si repozitář: git clone <repo-url>Otevři složku ve VS Code.Nainstaluj si VS Code extenzi Live Server.Klikni pravým na public/index.html a zvol "Open with Live Server".Poznámka: Vývoj probíhá primárně za asistence GitHub Copilot PRO dle firemních standardů.📈 Pokyny pro Marketing (Mikeš)SEO: Základní meta tagy a Open Graph data jsou nastaveny v hlavičce index.html.Měřící kódy (Pixely): Pixelové skripty vkládejte do index.html, ideálně jejich spuštění podmiňte souhlasem v Cookie liště (viz logika v index.html na konci souboru).Konverze: Po odeslání rezervačního formuláře se uživateli zobrazí id #success-message. Lze využít pro měření leadů.🛠 Co chybí do produkce (TODO list)[ ] Vyměnit placeholder obrázky z Unsplash za reálné fotografie ordinace a paní Limpouchové.[ ] Upřesnit a schválit s klientkou přesné ceny a časy terapií.[ ] Naprogramovat functions/api/book.js ve CF Workers pro propis do D1 databáze.[ ] Vytvořit podstránky pro Zásady zpracování osobních údajů (GDPR).[ ] Založit projekt v Cloudflare a připojit na něj tento GitHub repozitář (Automatický deploy).
+# Bicom Pisek - Rezervacni web a ekosystem
+
+Tento repozitar obsahuje frontend prototyp a pripravenou strukturu pro rust do full-stack reseni na Cloudflare.
+
+## Technicka architektura
+- Frontend: HTML5 + Tailwind CSS (kompilovany build)
+- Hosting: Cloudflare Pages
+- Backend API (plan): Cloudflare Workers
+- Databaze (plan): Cloudflare D1
+- AI asistent (plan): Workers AI
+- Uloziste (plan): Cloudflare R2
+
+## Aktualni struktura repozitare
+```text
+/
+|- public/
+|  |- index.html
+|  |- assets/
+|  `- css/
+|- src/
+|  `- input.css
+|- functions/
+|  `- api/
+|     |- book.js
+|     `- chat.js
+|- package.json
+|- tailwind.config.js
+|- .gitignore
+`- Readme.md
+```
+
+## Build trasa (aktualni doporuceny flow)
+1. **Vyvoj HTML/JS**
+   - Upravuj `public/index.html`.
+2. **Tailwind watch**
+   - Spust `npm run watch:css` a nech bezet pri vyvoji.
+3. **Produkci build CSS**
+   - Pred commit/publish spust `npm run build`.
+4. **Frontend deploy**
+   - Cloudflare Pages nasad z vetve `main` (build command: `npm run build`, output dir: `public`).
+5. **Backend evoluce**
+   - Dodelat `functions/api/book.js` a `functions/api/chat.js` + napojeni na D1.
+
+## Lokalni vyvoj
+```bash
+git clone <repo-url>
+cd Bicom-Pisek-web
+npm install
+npm run build
+```
+
+Pro prubezny vyvoj CSS:
+```bash
+npm run watch:css
+```
+
+Stranku otevri lokalne z `public/index.html` (napr. pres VS Code Live Server).
+
+## NPM skripty
+- `npm run build:css` - jednorazovy build Tailwind CSS
+- `npm run watch:css` - watch mod pro vyvoj
+- `npm run build` - alias na produkcni CSS build
+
+## TODO do produkce
+- Nahradit placeholder obrazky realnymi fotkami
+- Schvalit finalni cenik a casy terapii
+- Implementovat API endpointy (`book`, `chat`) na Cloudflare Workers
+- Dodat GDPR podstranky
+- Pripojit repozitar na Cloudflare Pages + Workers pipeline

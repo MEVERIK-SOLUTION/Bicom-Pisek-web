@@ -1,0 +1,24 @@
+{
+  "name": "bicom-pisek-web",
+  "version": "1.0.0",
+  "description": "Frontend prototyp pro Bicom Pisek s pripravenym Tailwind build pipeline.",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/input.css -o ./public/css/styles.css --minify",
+    "watch:css": "tailwindcss -i ./src/input.css -o ./public/css/styles.css --watch",
+    "build": "npm run build:css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MEVERIK-SOLUTION/Bicom-Pisek-web.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MEVERIK-SOLUTION/Bicom-Pisek-web/issues"
+  },
+  "homepage": "https://github.com/MEVERIK-SOLUTION/Bicom-Pisek-web#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}
