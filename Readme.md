@@ -49,7 +49,7 @@ Tento repozitar obsahuje frontend prototyp a pripravenou strukturu pro rust do f
 - Manualni deploy pres CLI:
   - `npm run cf:deploy`
 - Cileny Pages project:
-   - `bivom-pisek` (`https://bivom-pisek.pages.dev`)
+   - `bicom-pisek` (`https://bicom-pisek.pages.dev`)
 
 ## Automaticke buildy a deploye
 - V repozitari je workflow `.github/workflows/cloudflare-pages.yml`.
@@ -84,7 +84,7 @@ The AI chat assistant is now **fully operational** and integrated:
 - **Backend:** `functions/api/chat.js`
 - **Model:** `gpt-4o-mini` (GitHub Models inference)
 - **Language:** Czech (Česky)
-- **Status:** Live on https://bivom-pisek.pages.dev
+- **Status:** Live on https://bicom-pisek.pages.dev
 
 The assistant is configured to provide helpful, empathetic responses in Czech for Bicom Pisek business context.
 
