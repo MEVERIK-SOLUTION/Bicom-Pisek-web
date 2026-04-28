@@ -1,0 +1,22 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Logo Bicom Písek</title>
+  <desc id="desc">Symbol vlny a listu v tyrkysových odstínech pro značku Bicom Písek.</desc>
+  <defs>
+    <linearGradient id="bg" x1="64" y1="64" x2="448" y2="448" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#14B8A6"/>
+      <stop offset="1" stop-color="#0D9488"/>
+    </linearGradient>
+    <linearGradient id="wave" x1="120" y1="180" x2="392" y2="332" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ECFEFF"/>
+      <stop offset="1" stop-color="#CCFBF1"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="64" y="64" width="384" height="384" rx="96" fill="url(#bg)"/>
+
+  <path d="M142 292C182 250 212 250 252 292C292 334 322 334 362 292" stroke="url(#wave)" stroke-width="28" stroke-linecap="round"/>
+  <path d="M142 236C182 194 212 194 252 236C292 278 322 278 362 236" stroke="url(#wave)" stroke-opacity="0.72" stroke-width="20" stroke-linecap="round"/>
+
+  <path d="M262 146C307 151 340 185 347 228C302 223 269 189 262 146Z" fill="#F0FDFA"/>
+  <path d="M287 170C295 187 302 204 310 221" stroke="#99F6E4" stroke-width="8" stroke-linecap="round"/>
+</svg>

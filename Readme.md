@@ -86,6 +86,16 @@ The AI chat assistant is now **fully operational** and integrated:
 
 The assistant is configured to provide helpful, empathetic responses in Czech for Bicom Pisek business context.
 
+### Expert protokoly a "trénink" (knowledge grounding)
+- Znalostní báze je v `functions/api/bicom-knowledge.js`.
+- Protokoly odpovědí a bezpečnostní pravidla se injektují do system promptu v `functions/api/chat.js`.
+- Asistent má definovaný výstupní rámec:
+   - stručná odpověď,
+   - praktický další krok,
+   - jemné CTA na rezervaci nebo upřesnění.
+
+Pro rozšíření odbornosti průběžně doplňuj konkrétní FAQ, ceník, kontraindikace a provozní informace do znalostní báze.
+
 ### Environment Variables (Configured ✅)
 - `GITHUB_MODELS_API_KEY` = GitHub PAT with models access
 - `GITHUB_MODEL` = `gpt-4o-mini` (currently configured)

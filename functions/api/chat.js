@@ -1,3 +1,5 @@
+import { BICOM_KNOWLEDGE } from "./bicom-knowledge.js";
+
 const CORS_HEADERS = {
   "access-control-allow-origin": "*",
   "access-control-allow-methods": "POST, OPTIONS",
@@ -46,7 +48,7 @@ export async function onRequestPost(context) {
   }
 
   const apiKey = env.GITHUB_MODELS_API_KEY;
-  const model = env.GITHUB_MODEL || "azureml/Phi-4-mini-instruct";
+  const model = env.GITHUB_MODEL || "gpt-4o-mini";
   const endpoint = env.GITHUB_MODELS_ENDPOINT || "https://models.github.ai/inference";
 
   if (!apiKey) {
@@ -59,11 +61,21 @@ export async function onRequestPost(context) {
     );
   }
 
+  const groundedContext = JSON.stringify(BICOM_KNOWLEDGE);
+
   const prompt = [
     {
       role: "system",
-      content:
-        "Jsi asistent webu Bicom Pisek. Odpovidej cesky, vecne, empaticky a kratce. Nevytvarej zdravotni diagnozy.",
+      content: [
+        "Jsi specializovany AI asistent znacky Bicom Pisek.",
+        "Tve hlavni cile jsou: presnost, lidskost, bezpecnost a obchodni relevance.",
+        "Musis dodrzovat interni protokoly, komunikacni styl a pravidla bezpecnosti.",
+        "Nikdy nevymyslej fakta, ktera nemas v kontextu.",
+        "Pokud je dotaz mimo kontext nebo medicinsky rizikovy, udelej bezpecny fallback.",
+        "Kdyz nevis konkretni detail (cena, termin, ord. hodiny), transparentne to rekni a nabidni rezervaci/dotaz.",
+        "Kontext znacky a pravidel:",
+        groundedContext,
+      ].join("\n"),
     },
     {
       role: "user",
@@ -80,8 +92,8 @@ export async function onRequestPost(context) {
     body: JSON.stringify({
       model,
       messages: prompt,
-      temperature: 0.4,
-      max_tokens: 300,
+      temperature: 0.25,
+      max_tokens: 420,
     }),
   });
 
