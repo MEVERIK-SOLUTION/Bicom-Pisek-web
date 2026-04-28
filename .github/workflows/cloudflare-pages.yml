@@ -44,7 +44,7 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
           if [ "${{ github.event_name }}" = "pull_request" ]; then
-            npx wrangler pages deploy public --project-name bicom-pisek-web --branch pr-${{ github.event.pull_request.number }}
+            npx wrangler pages deploy public --project-name bivom-pisek --branch pr-${{ github.event.pull_request.number }}
           else
-            npx wrangler pages deploy public --project-name bicom-pisek-web --branch main
+            npx wrangler pages deploy public --project-name bivom-pisek --branch main
           fi

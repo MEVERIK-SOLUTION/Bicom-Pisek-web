@@ -1,5 +1,12 @@
 # Local development env vars for wrangler pages dev
 # Copy to .dev.vars and fill in your values.
 GITHUB_MODELS_API_KEY=ghp_or_github_pat_with_models_access
-GITHUB_MODEL=azureml/Phi-4-mini-instruct
+GITHUB_MODEL=gpt-4o-mini
 GITHUB_MODELS_ENDPOINT=https://models.github.ai/inference
+
+# Booking integration mode:
+# - stub (default): only accepts and validates reservation
+# - google_webhook: forwards reservation to Google workflow endpoint
+BOOKING_INTEGRATION_MODE=stub
+GOOGLE_BOOKING_WEBHOOK_URL=
+GOOGLE_BOOKING_WEBHOOK_TOKEN=

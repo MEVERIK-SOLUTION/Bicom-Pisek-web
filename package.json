@@ -7,7 +7,7 @@
     "watch:css": "tailwindcss -i ./src/input.css -o ./public/css/styles.css --watch",
     "build": "npm run build:css",
     "cf:dev": "npm run build && wrangler pages dev public --compatibility-date=2026-04-28",
-    "cf:deploy": "npm run build && wrangler pages deploy public --project-name bicom-pisek-web"
+    "cf:deploy": "npm run build && wrangler pages deploy public --project-name bivom-pisek"
   },
   "repository": {
     "type": "git",

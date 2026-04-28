@@ -48,6 +48,8 @@ Tento repozitar obsahuje frontend prototyp a pripravenou strukturu pro rust do f
   - `npm run cf:dev`
 - Manualni deploy pres CLI:
   - `npm run cf:deploy`
+- Cileny Pages project:
+   - `bivom-pisek` (`https://bivom-pisek.pages.dev`)
 
 ## Automaticke buildy a deploye
 - V repozitari je workflow `.github/workflows/cloudflare-pages.yml`.
@@ -82,7 +84,7 @@ The AI chat assistant is now **fully operational** and integrated:
 - **Backend:** `functions/api/chat.js`
 - **Model:** `gpt-4o-mini` (GitHub Models inference)
 - **Language:** Czech (Česky)
-- **Status:** Live on https://bicom-pisek-web.pages.dev
+- **Status:** Live on https://bivom-pisek.pages.dev
 
 The assistant is configured to provide helpful, empathetic responses in Czech for Bicom Pisek business context.
 
@@ -102,6 +104,19 @@ Pro rozšíření odbornosti průběžně doplňuj konkrétní FAQ, ceník, kont
 - `GITHUB_MODELS_ENDPOINT` = `https://models.github.ai/inference`
 
 These are set in Cloudflare Pages production environment and automatically deployed.
+
+## 📅 Rezervace (API + Google-ready)
+
+- Frontend formular je napojeny na endpoint `POST /api/book`.
+- Endpoint validuje data a vraci `bookingId`.
+- Integracni rezimy:
+   - `stub` (default): prijme rezervaci a potvrdi ji
+   - `google_webhook`: preda rezervaci do Google workflow webhooku
+
+Potrebne promene prostredi pro Google napojeni:
+- `BOOKING_INTEGRATION_MODE=google_webhook`
+- `GOOGLE_BOOKING_WEBHOOK_URL=<url na webhook>`
+- `GOOGLE_BOOKING_WEBHOOK_TOKEN=<volitelny bearer token>`
 
 ## Lokalni vyvoj
 ```bash
