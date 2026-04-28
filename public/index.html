@@ -9,14 +9,34 @@
     <meta name="keywords" content="Bicom Písek, biorezonance, odvykání kouření, alergie, detox, konzultace">
     <meta name="author" content="Lenka Limpouchová">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://bicompisek.cz/">
+    <meta property="og:site_name" content="Bicom Písek">
+    <meta property="og:locale" content="cs_CZ">
+    <meta property="og:url" content="https://bicom-pisek.pages.dev/">
     <meta property="og:title" content="Bicom Písek | Najděte vhodnou cestu podpory">
     <meta property="og:description" content="Rozcestník služeb Bicom Písek. Vyberte oblast zájmu a objednejte vstupní konzultaci.">
     <meta property="og:image" content="https://images.unsplash.com/photo-1545205597-3d9d02c29597?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
-    <link rel="canonical" href="https://bicompisek.cz/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Bicom Písek | Biorezonance a vstupní konzultace">
+    <meta name="twitter:description" content="Vyberte svou cestu a rezervujte konzultaci v Bicom Písek.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1545205597-3d9d02c29597?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+    <meta name="theme-color" content="#0d9488">
+    <link rel="canonical" href="https://bicom-pisek.pages.dev/">
 
     <link rel="icon" type="image/svg+xml" href="./assets/logo-bicom-pisek.svg">
     <link rel="stylesheet" href="./css/styles.css">
+
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "HealthAndBeautyBusiness",
+            "name": "Bicom Písek",
+            "url": "https://bicom-pisek.pages.dev/",
+            "logo": "https://bicom-pisek.pages.dev/assets/logo-bicom-pisek.svg",
+            "areaServed": "Písek",
+            "telephone": "+420000000000",
+            "email": "info@bicompisek.cz"
+        }
+        </script>
 
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -42,6 +62,9 @@
             border: 1px solid rgba(255,255,255,.62);
         }
         .section-title { letter-spacing: -0.03em; }
+        .pulse-ring {
+            background: conic-gradient(from 180deg, #14b8a6, #22d3ee, #0d9488, #14b8a6);
+        }
         #ai-messages::-webkit-scrollbar { width: 6px; }
         #ai-messages::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
     </style>
@@ -152,6 +175,37 @@
             </div>
         </div>
     </header>
+
+    <section id="bicom-pulse" class="py-14 lg:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-8 items-center">
+                <div data-aos="fade-up">
+                    <h2 class="font-serif section-title text-3xl md:text-5xl font-bold text-slate-900">Bicom Pulse Navigator</h2>
+                    <p class="mt-4 text-slate-600">Unikátní orientační prvek: posuňte úroveň obtíží a okamžitě uvidíte doporučený první krok. Je to rychlá orientace, ne diagnóza.</p>
+                    <div class="mt-6 bg-white border border-slate-200 rounded-2xl p-5">
+                        <label for="pulse-level" class="text-sm font-medium text-slate-700">Jak intenzivně teď potíže vnímáte?</label>
+                        <input id="pulse-level" type="range" min="1" max="10" value="4" class="mt-3 w-full accent-teal-600">
+                        <div class="mt-3 flex justify-between text-xs text-slate-500"><span>Lehké</span><span>Střední</span><span>Silné</span></div>
+                        <p id="pulse-recommendation" class="mt-4 text-sm text-slate-700"></p>
+                        <button class="mt-4 inline-flex items-center gap-2 rounded-full bg-slate-900 text-white px-4 py-2 text-sm" data-ai-question="Pomoz mi vybrat vhodný první krok podle mé situace.">
+                            Přenést do AI průvodce
+                            <i data-lucide="move-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div data-aos="zoom-in" class="relative flex items-center justify-center">
+                    <div class="pulse-ring h-72 w-72 rounded-full p-1 shadow-[0_20px_60px_rgba(13,148,136,0.35)]">
+                        <div class="h-full w-full rounded-full bg-white flex flex-col items-center justify-center text-center p-6">
+                            <p class="text-xs uppercase tracking-widest text-teal-700 font-semibold">Váš Bicom Pulse</p>
+                            <p id="pulse-score" class="mt-2 text-6xl font-bold text-slate-900">4</p>
+                            <p class="mt-2 text-sm text-slate-600">Rychlá orientace pro doporučení dalšího kroku.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <main>
         <section id="rozcestnik" class="py-16 lg:py-24">
@@ -335,6 +389,16 @@
                         <p class="mt-3 text-slate-600">Ano, přes AI asistenta nebo kontaktní formulář. Pomůžeme vám vybrat vhodný první krok.</p>
                     </details>
                 </div>
+
+                <div class="mt-10 rounded-2xl border border-slate-200 bg-white p-5 text-center">
+                    <p class="text-sm text-slate-600">Líbí se vám tento rozcestník? Sdílejte ho dál.</p>
+                    <div class="mt-4 flex flex-wrap justify-center gap-2">
+                        <a class="rounded-full border border-slate-300 px-4 py-2 text-sm hover:border-teal-500 hover:text-teal-700 transition" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fbicom-pisek.pages.dev%2F">Sdílet na Facebooku</a>
+                        <a class="rounded-full border border-slate-300 px-4 py-2 text-sm hover:border-teal-500 hover:text-teal-700 transition" target="_blank" rel="noopener" href="https://wa.me/?text=Bicom%20P%C3%ADsek%20-%20rozcestn%C3%ADk%20slu%C5%BEeb%20https%3A%2F%2Fbicom-pisek.pages.dev%2F">Sdílet na WhatsApp</a>
+                        <button id="copy-link" class="rounded-full border border-slate-300 px-4 py-2 text-sm hover:border-teal-500 hover:text-teal-700 transition">Kopírovat odkaz</button>
+                    </div>
+                    <p id="copy-link-status" class="mt-2 text-xs text-emerald-700"></p>
+                </div>
             </div>
         </section>
     </main>
@@ -409,6 +473,11 @@
         const bookingForm = document.getElementById('booking-form');
         const bookingSubmit = document.getElementById('booking-submit');
         const bookingStatus = document.getElementById('booking-status');
+        const pulseLevel = document.getElementById('pulse-level');
+        const pulseScore = document.getElementById('pulse-score');
+        const pulseRecommendation = document.getElementById('pulse-recommendation');
+        const copyLink = document.getElementById('copy-link');
+        const copyLinkStatus = document.getElementById('copy-link-status');
 
         function addMessage(role, text) {
             const bubble = document.createElement('div');
@@ -521,6 +590,34 @@
                 } finally {
                     bookingSubmit.disabled = false;
                     bookingSubmit.textContent = 'Odeslat poptávku';
+                }
+            });
+        }
+
+        function getPulseText(value) {
+            if (value <= 3) return 'Doporučení: začněte vstupní konzultací a jemným mapováním stavu. Ideální je kratší zpráva přes formulář.';
+            if (value <= 7) return 'Doporučení: vyberte konkrétní oblast podpory a domluvte cílené první sezení s následným plánem.';
+            return 'Doporučení: začněte konzultací co nejdříve a současně zvažte lékařské vyšetření, pokud jsou obtíže výrazné.';
+        }
+
+        if (pulseLevel && pulseScore && pulseRecommendation) {
+            const syncPulse = () => {
+                const value = Number(pulseLevel.value);
+                pulseScore.textContent = String(value);
+                pulseRecommendation.textContent = getPulseText(value);
+            };
+            pulseLevel.addEventListener('input', syncPulse);
+            syncPulse();
+        }
+
+        if (copyLink && copyLinkStatus) {
+            copyLink.addEventListener('click', async () => {
+                copyLinkStatus.textContent = '';
+                try {
+                    await navigator.clipboard.writeText('https://bicom-pisek.pages.dev/');
+                    copyLinkStatus.textContent = 'Odkaz zkopírován.';
+                } catch (error) {
+                    copyLinkStatus.textContent = 'Kopírování se nepodařilo.';
                 }
             });
         }
