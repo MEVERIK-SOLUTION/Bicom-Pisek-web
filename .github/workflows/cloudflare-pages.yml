@@ -28,6 +28,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Guard single index source
+        run: |
+          if [ -f index.html ]; then
+            echo "Error: root index.html detected. Keep only public/index.html."
+            exit 1
+          fi
+
       - name: Build assets
         run: npm run build
 
