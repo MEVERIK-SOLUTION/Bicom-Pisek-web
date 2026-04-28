@@ -100,6 +100,7 @@
                     <a href="#sluzby" class="text-slate-600 hover:text-teal-600 font-medium transition">Služby</a>
                     <a href="#o-bicomu" class="text-slate-600 hover:text-teal-600 font-medium transition">Jak to probíhá</a>
                     <a href="#cenik" class="text-slate-600 hover:text-teal-600 font-medium transition">Ceník</a>
+                    <a href="#blog" class="text-slate-600 hover:text-teal-600 font-medium transition">Blog</a>
                     <a href="#rezervace" class="bg-teal-600 hover:bg-teal-700 text-white px-6 py-2.5 rounded-full font-medium transition shadow-[0_4px_16px_rgba(13,148,136,.35)]">Vstupní konzultace</a>
                 </div>
 
@@ -114,6 +115,7 @@
                 <a href="#sluzby" class="px-3 py-2 rounded-lg hover:bg-slate-100">Služby</a>
                 <a href="#o-bicomu" class="px-3 py-2 rounded-lg hover:bg-slate-100">Jak to probíhá</a>
                 <a href="#cenik" class="px-3 py-2 rounded-lg hover:bg-slate-100">Ceník</a>
+                <a href="#blog" class="px-3 py-2 rounded-lg hover:bg-slate-100">Blog</a>
                 <a href="#rezervace" class="px-3 py-2 rounded-lg bg-teal-600 text-white">Vstupní konzultace</a>
             </div>
         </div>
@@ -128,10 +130,10 @@
                         Rozcestník služeb Bicom Písek
                     </span>
                     <h1 class="font-serif section-title text-4xl md:text-6xl font-bold leading-tight text-slate-900">
-                        Vyberte, s čím přicházíte.
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-cyan-500 italic">My navrhneme další krok.</span>
+                        <span id="cms-hero-title-1">Vyberte, s čím přicházíte.</span>
+                        <span id="cms-hero-title-2" class="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-cyan-500 italic">My navrhneme další krok.</span>
                     </h1>
-                    <p class="mt-6 text-lg text-slate-600 max-w-2xl">
+                    <p id="cms-hero-description" class="mt-6 text-lg text-slate-600 max-w-2xl">
                         Jasný vstup pro zájemce o biorezonanční podporu: odvykání kouření, alergie/citlivosti, detox a regenerace. Bez složitostí, s lidským přístupem.
                     </p>
                     <div class="mt-8 flex flex-col sm:flex-row gap-3">
@@ -300,17 +302,17 @@
                 <div class="mt-10 grid md:grid-cols-3 gap-6">
                     <article class="rounded-3xl bg-white border border-slate-200 p-6">
                         <h3 class="text-lg font-semibold text-slate-900">Vstupní konzultace</h3>
-                        <p class="mt-2 text-3xl font-bold text-teal-700">od 1 000 Kč</p>
+                        <p id="cms-price-consultation" class="mt-2 text-3xl font-bold text-teal-700">od 1 000 Kč</p>
                         <p class="mt-2 text-sm text-slate-600">Mapování stavu, cílů a návrh prvního postupu.</p>
                     </article>
                     <article class="rounded-3xl bg-white border border-slate-200 p-6">
                         <h3 class="text-lg font-semibold text-slate-900">Cílené sezení</h3>
-                        <p class="mt-2 text-3xl font-bold text-teal-700">od 1 200 Kč</p>
+                        <p id="cms-price-session" class="mt-2 text-3xl font-bold text-teal-700">od 1 200 Kč</p>
                         <p class="mt-2 text-sm text-slate-600">Navazuje na konzultaci podle vybrané oblasti.</p>
                     </article>
                     <article class="rounded-3xl bg-white border border-slate-200 p-6">
                         <h3 class="text-lg font-semibold text-slate-900">Program více návštěv</h3>
-                        <p class="mt-2 text-3xl font-bold text-teal-700">individuálně</p>
+                        <p id="cms-price-program" class="mt-2 text-3xl font-bold text-teal-700">individuálně</p>
                         <p class="mt-2 text-sm text-slate-600">Pro dlouhodobější podporu s průběžnou úpravou.</p>
                     </article>
                 </div>
@@ -325,8 +327,8 @@
                         <p class="mt-4 text-slate-600">Nejrychlejší cesta je krátká zpráva s tím, co řešíte. Ozveme se s dalším krokem a termínem.</p>
                         <div class="mt-6 space-y-3 text-sm text-slate-700">
                             <p class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-teal-700"></i>Písek a okolí</p>
-                            <p class="flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4 text-teal-700"></i>+420 000 000 000</p>
-                            <p class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4 text-teal-700"></i>info@bicompisek.cz</p>
+                            <p class="flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4 text-teal-700"></i><span id="cms-contact-phone">+420 000 000 000</span></p>
+                            <p class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4 text-teal-700"></i><span id="cms-contact-email">info@bicompisek.cz</span></p>
                         </div>
                     </div>
                     <form id="booking-form" class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm">
@@ -372,6 +374,16 @@
             </div>
         </section>
 
+        <section id="blog" class="py-16 lg:py-24 bg-white border-y border-slate-200/70">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl" data-aos="fade-up">
+                    <h2 class="font-serif section-title text-3xl md:text-5xl font-bold text-slate-900">Blog a novinky</h2>
+                    <p class="mt-4 text-slate-600">Praktické články a vysvětlení k tomu, jak funguje podpora v Bicom Písek. Obsah můžeš přidávat přes Admin stránku.</p>
+                </div>
+                <div id="blog-list" class="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+            </div>
+        </section>
+
         <section class="py-16 lg:py-20">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="font-serif section-title text-3xl md:text-4xl font-bold text-slate-900 text-center">Časté dotazy</h2>
@@ -409,6 +421,7 @@
             <div class="flex gap-4">
                 <a href="#" class="hover:text-white transition">Ochrana osobních údajů (GDPR)</a>
                 <a href="#" class="hover:text-white transition">Obchodní podmínky</a>
+                <a href="/admin/" class="hover:text-white transition">Admin</a>
             </div>
         </div>
     </footer>
@@ -473,11 +486,96 @@
         const bookingForm = document.getElementById('booking-form');
         const bookingSubmit = document.getElementById('booking-submit');
         const bookingStatus = document.getElementById('booking-status');
+        const blogList = document.getElementById('blog-list');
         const pulseLevel = document.getElementById('pulse-level');
         const pulseScore = document.getElementById('pulse-score');
         const pulseRecommendation = document.getElementById('pulse-recommendation');
         const copyLink = document.getElementById('copy-link');
         const copyLinkStatus = document.getElementById('copy-link-status');
+
+        const defaultCmsContent = {
+            heroTitle1: 'Vyberte, s čím přicházíte.',
+            heroTitle2: 'My navrhneme další krok.',
+            heroDescription: 'Jasný vstup pro zájemce o biorezonanční podporu: odvykání kouření, alergie/citlivosti, detox a regenerace. Bez složitostí, s lidským přístupem.',
+            prices: {
+                consultation: 'od 1 000 Kč',
+                session: 'od 1 200 Kč',
+                program: 'individuálně'
+            },
+            contact: {
+                phone: '+420 000 000 000',
+                email: 'info@bicompisek.cz'
+            },
+            blogPosts: [
+                {
+                    title: 'Jak se připravit na vstupní konzultaci',
+                    excerpt: 'Co si připravit před první návštěvou, aby konzultace měla maximální přínos.',
+                    date: '2026-04-28'
+                },
+                {
+                    title: 'Odvykání kouření: první 3 kroky',
+                    excerpt: 'Jednoduchý plán, jak nastartovat změnu bez zbytečného přetížení.',
+                    date: '2026-04-22'
+                },
+                {
+                    title: 'Alergie a citlivosti: jak volit první krok',
+                    excerpt: 'Rychlá orientace, kdy začít podpůrným režimem a kdy řešit i další odborné vyšetření.',
+                    date: '2026-04-15'
+                }
+            ]
+        };
+
+        function loadCmsContent() {
+            try {
+                const raw = localStorage.getItem('bicomCmsContent');
+                if (!raw) return defaultCmsContent;
+                const parsed = JSON.parse(raw);
+                return {
+                    ...defaultCmsContent,
+                    ...parsed,
+                    prices: { ...defaultCmsContent.prices, ...(parsed.prices || {}) },
+                    contact: { ...defaultCmsContent.contact, ...(parsed.contact || {}) },
+                    blogPosts: Array.isArray(parsed.blogPosts) && parsed.blogPosts.length ? parsed.blogPosts : defaultCmsContent.blogPosts
+                };
+            } catch {
+                return defaultCmsContent;
+            }
+        }
+
+        function setText(id, value) {
+            const el = document.getElementById(id);
+            if (el && typeof value === 'string') el.textContent = value;
+        }
+
+        function renderBlogPosts(posts) {
+            if (!blogList) return;
+            blogList.innerHTML = '';
+            posts.forEach((post) => {
+                const card = document.createElement('article');
+                card.className = 'rounded-3xl bg-slate-50 border border-slate-200 p-6 hover:shadow-lg transition';
+                card.innerHTML = `
+                    <p class="text-xs uppercase tracking-wide text-teal-700 font-semibold">${(post.date || '').slice(0, 10)}</p>
+                    <h3 class="mt-2 text-xl font-semibold text-slate-900">${post.title || ''}</h3>
+                    <p class="mt-3 text-slate-600 text-sm">${post.excerpt || ''}</p>
+                `;
+                blogList.appendChild(card);
+            });
+        }
+
+        function applyCmsContent(content) {
+            setText('cms-hero-title-1', content.heroTitle1);
+            setText('cms-hero-title-2', content.heroTitle2);
+            setText('cms-hero-description', content.heroDescription);
+            setText('cms-price-consultation', content.prices.consultation);
+            setText('cms-price-session', content.prices.session);
+            setText('cms-price-program', content.prices.program);
+            setText('cms-contact-phone', content.contact.phone);
+            setText('cms-contact-email', content.contact.email);
+            renderBlogPosts(content.blogPosts);
+        }
+
+        const cmsContent = loadCmsContent();
+        applyCmsContent(cmsContent);
 
         function addMessage(role, text) {
             const bubble = document.createElement('div');

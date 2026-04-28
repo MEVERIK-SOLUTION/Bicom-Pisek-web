@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bicom Písek Admin</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    body { background: #f8fafc; }
+  </style>
+</head>
+<body class="font-sans text-slate-800">
+  <div class="max-w-5xl mx-auto px-4 py-10">
+    <a href="/" class="text-sm text-teal-700 hover:text-teal-800">← Zpět na web</a>
+    <h1 class="mt-3 text-3xl font-bold text-slate-900">Bicom Písek Admin</h1>
+    <p class="mt-2 text-slate-600">Správa textů, ceníku, kontaktu a blogu.</p>
+
+    <section id="login-section" class="mt-8 bg-white border border-slate-200 rounded-2xl p-6">
+      <h2 class="text-xl font-semibold text-slate-900">Přihlášení</h2>
+      <p class="mt-1 text-sm text-slate-600">Zadejte heslo pro správu obsahu.</p>
+      <div class="mt-4 flex flex-col sm:flex-row gap-3">
+        <input id="admin-password" type="password" class="flex-1 rounded-xl border-slate-300 focus:border-teal-500 focus:ring-teal-500" placeholder="Heslo">
+        <button id="admin-login" class="rounded-xl bg-teal-600 hover:bg-teal-700 text-white px-5 py-2.5 font-medium">Přihlásit</button>
+      </div>
+      <p id="login-status" class="mt-2 text-sm text-red-600"></p>
+    </section>
+
+    <section id="admin-section" class="hidden mt-8 space-y-6">
+      <div class="bg-white border border-slate-200 rounded-2xl p-6">
+        <h2 class="text-xl font-semibold text-slate-900">Hero texty</h2>
+        <div class="mt-4 grid gap-4">
+          <label class="text-sm font-medium">Titulek 1
+            <input id="hero-title-1" type="text" class="mt-1 w-full rounded-xl border-slate-300 focus:border-teal-500 focus:ring-teal-500">
+          </label>
+          <label class="text-sm font-medium">Titulek 2
+            <input id="hero-title-2" type="text" class="mt-1 w-full rounded-xl border-slate-300 focus:border-teal-500 focus:ring-teal-500">
+          </label>
+          <label class="text-sm font-medium">Popis
+            <textarea id="hero-description" rows="3" class="mt-1 w-full rounded-xl border-slate-300 focus:border-teal-500 focus:ring-teal-500"></textarea>
+          </label>
+        </div>
+      </div>
+
+      <div class="bg-white border border-slate-200 rounded-2xl p-6">
+        <h2 class="text-xl font-semibold text-slate-900">Ceník</h2>
+        <div class="mt-4 grid md:grid-cols-3 gap-4">
+          <label class="text-sm font-medium">Vstupní konzultace
+            <input id="price-consultation" type="text" class="mt-1 w-full rounded-xl border-slate-300 focus:border-teal-500 focus:ring-teal-500">
+          </label>
+          <label class="text-sm font-medium">Cílené sezení
+            <input id="price-session" type="text" class="mt-1 w-full rounded-xl border-slate-300 focus:border-teal-500 focus:ring-teal-500">
+          </label>
+          <label class="text-sm font-medium">Program více návštěv
+            <input id="price-program" type="text" class="mt-1 w-full rounded-xl border-slate-300 focus:border-teal-500 focus:ring-teal-500">
+          </label>
+        </div>
+      </div>
+
+      <div class="bg-white border border-slate-200 rounded-2xl p-6">
+        <h2 class="text-xl font-semibold text-slate-900">Kontakt</h2>
+        <div class="mt-4 grid md:grid-cols-2 gap-4">
+          <label class="text-sm font-medium">Telefon
+            <input id="contact-phone" type="text" class="mt-1 w-full rounded-xl border-slate-300 focus:border-teal-500 focus:ring-teal-500">
+          </label>
+          <label class="text-sm font-medium">Email
+            <input id="contact-email" type="email" class="mt-1 w-full rounded-xl border-slate-300 focus:border-teal-500 focus:ring-teal-500">
+          </label>
+        </div>
+      </div>
+
+      <div class="bg-white border border-slate-200 rounded-2xl p-6">
+        <div class="flex items-center justify-between gap-4">
+          <h2 class="text-xl font-semibold text-slate-900">Blog články</h2>
+          <button id="add-post" class="rounded-xl border border-slate-300 px-4 py-2 text-sm hover:border-teal-500 hover:text-teal-700">Přidat článek</button>
+        </div>
+        <div id="blog-posts" class="mt-4 space-y-4"></div>
+      </div>
+
+      <div class="bg-white border border-slate-200 rounded-2xl p-6">
+        <div class="flex flex-wrap gap-3">
+          <button id="save-content" class="rounded-xl bg-teal-600 hover:bg-teal-700 text-white px-5 py-2.5 font-medium">Uložit změny</button>
+          <button id="reset-content" class="rounded-xl border border-slate-300 px-5 py-2.5 font-medium">Reset na výchozí</button>
+          <a href="/" target="_blank" class="rounded-xl border border-slate-300 px-5 py-2.5 font-medium">Otevřít web</a>
+        </div>
+        <p id="save-status" class="mt-3 text-sm text-emerald-700"></p>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const PASSWORD = 'Bicom-Pisek26';
+    const STORAGE_KEY = 'bicomCmsContent';
+
+    const defaultContent = {
+      heroTitle1: 'Vyberte, s čím přicházíte.',
+      heroTitle2: 'My navrhneme další krok.',
+      heroDescription: 'Jasný vstup pro zájemce o biorezonanční podporu: odvykání kouření, alergie/citlivosti, detox a regenerace. Bez složitostí, s lidským přístupem.',
+      prices: {
+        consultation: 'od 1 000 Kč',
+        session: 'od 1 200 Kč',
+        program: 'individuálně'
+      },
+      contact: {
+        phone: '+420 000 000 000',
+        email: 'info@bicompisek.cz'
+      },
+      blogPosts: [
+        {
+          title: 'Jak se připravit na vstupní konzultaci',
+          excerpt: 'Co si připravit před první návštěvou, aby konzultace měla maximální přínos.',
+          date: '2026-04-28'
+        },
+        {
+          title: 'Odvykání kouření: první 3 kroky',
+          excerpt: 'Jednoduchý plán, jak nastartovat změnu bez zbytečného přetížení.',
+          date: '2026-04-22'
+        },
+        {
+          title: 'Alergie a citlivosti: jak volit první krok',
+          excerpt: 'Rychlá orientace, kdy začít podpůrným režimem a kdy řešit i další odborné vyšetření.',
+          date: '2026-04-15'
+        }
+      ]
+    };
+
+    const loginSection = document.getElementById('login-section');
+    const adminSection = document.getElementById('admin-section');
+    const passwordInput = document.getElementById('admin-password');
+    const loginButton = document.getElementById('admin-login');
+    const loginStatus = document.getElementById('login-status');
+    const saveStatus = document.getElementById('save-status');
+    const blogPostsWrap = document.getElementById('blog-posts');
+
+    let content = null;
+
+    function safeLoad() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return structuredClone(defaultContent);
+        const parsed = JSON.parse(raw);
+        return {
+          ...structuredClone(defaultContent),
+          ...parsed,
+          prices: { ...defaultContent.prices, ...(parsed.prices || {}) },
+          contact: { ...defaultContent.contact, ...(parsed.contact || {}) },
+          blogPosts: Array.isArray(parsed.blogPosts) ? parsed.blogPosts : structuredClone(defaultContent.blogPosts)
+        };
+      } catch {
+        return structuredClone(defaultContent);
+      }
+    }
+
+    function postRow(post, index) {
+      const row = document.createElement('div');
+      row.className = 'rounded-xl border border-slate-200 p-4';
+      row.innerHTML = `
+        <div class="grid gap-3">
+          <label class="text-sm font-medium">Nadpis
+            <input data-field="title" data-index="${index}" type="text" class="mt-1 w-full rounded-xl border-slate-300" value="${post.title || ''}">
+          </label>
+          <label class="text-sm font-medium">Perex
+            <textarea data-field="excerpt" data-index="${index}" rows="2" class="mt-1 w-full rounded-xl border-slate-300">${post.excerpt || ''}</textarea>
+          </label>
+          <div class="grid sm:grid-cols-2 gap-3">
+            <label class="text-sm font-medium">Datum
+              <input data-field="date" data-index="${index}" type="date" class="mt-1 w-full rounded-xl border-slate-300" value="${(post.date || '').slice(0, 10)}">
+            </label>
+            <div class="flex items-end">
+              <button data-remove="${index}" type="button" class="w-full rounded-xl border border-red-300 text-red-700 py-2">Smazat článek</button>
+            </div>
+          </div>
+        </div>
+      `;
+      return row;
+    }
+
+    function renderBlogEditor() {
+      blogPostsWrap.innerHTML = '';
+      content.blogPosts.forEach((post, index) => blogPostsWrap.appendChild(postRow(post, index)));
+
+      blogPostsWrap.querySelectorAll('[data-remove]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const index = Number(btn.dataset.remove);
+          content.blogPosts.splice(index, 1);
+          renderBlogEditor();
+        });
+      });
+
+      blogPostsWrap.querySelectorAll('[data-field]').forEach((input) => {
+        input.addEventListener('input', () => {
+          const index = Number(input.dataset.index);
+          const field = input.dataset.field;
+          content.blogPosts[index][field] = input.value;
+        });
+      });
+    }
+
+    function bindBasics() {
+      document.getElementById('hero-title-1').value = content.heroTitle1;
+      document.getElementById('hero-title-2').value = content.heroTitle2;
+      document.getElementById('hero-description').value = content.heroDescription;
+      document.getElementById('price-consultation').value = content.prices.consultation;
+      document.getElementById('price-session').value = content.prices.session;
+      document.getElementById('price-program').value = content.prices.program;
+      document.getElementById('contact-phone').value = content.contact.phone;
+      document.getElementById('contact-email').value = content.contact.email;
+
+      document.getElementById('hero-title-1').addEventListener('input', (e) => content.heroTitle1 = e.target.value);
+      document.getElementById('hero-title-2').addEventListener('input', (e) => content.heroTitle2 = e.target.value);
+      document.getElementById('hero-description').addEventListener('input', (e) => content.heroDescription = e.target.value);
+      document.getElementById('price-consultation').addEventListener('input', (e) => content.prices.consultation = e.target.value);
+      document.getElementById('price-session').addEventListener('input', (e) => content.prices.session = e.target.value);
+      document.getElementById('price-program').addEventListener('input', (e) => content.prices.program = e.target.value);
+      document.getElementById('contact-phone').addEventListener('input', (e) => content.contact.phone = e.target.value);
+      document.getElementById('contact-email').addEventListener('input', (e) => content.contact.email = e.target.value);
+    }
+
+    loginButton.addEventListener('click', () => {
+      if (passwordInput.value !== PASSWORD) {
+        loginStatus.textContent = 'Neplatné heslo.';
+        return;
+      }
+      loginStatus.textContent = '';
+      loginSection.classList.add('hidden');
+      adminSection.classList.remove('hidden');
+
+      content = safeLoad();
+      bindBasics();
+      renderBlogEditor();
+    });
+
+    passwordInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') loginButton.click();
+    });
+
+    document.getElementById('add-post').addEventListener('click', () => {
+      content.blogPosts.unshift({
+        title: 'Nový článek',
+        excerpt: 'Doplňte stručný perex článku.',
+        date: new Date().toISOString().slice(0, 10)
+      });
+      renderBlogEditor();
+    });
+
+    document.getElementById('save-content').addEventListener('click', () => {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(content));
+      saveStatus.textContent = 'Obsah uložen. Změny uvidíte hned na hlavní stránce v tomto prohlížeči.';
+    });
+
+    document.getElementById('reset-content').addEventListener('click', () => {
+      content = structuredClone(defaultContent);
+      bindBasics();
+      renderBlogEditor();
+      saveStatus.textContent = 'Vráceno na výchozí hodnoty. Pro potvrzení klikněte na Uložit změny.';
+    });
+  </script>
+</body>
+</html>

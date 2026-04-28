@@ -118,6 +118,23 @@ Potrebne promene prostredi pro Google napojeni:
 - `GOOGLE_BOOKING_WEBHOOK_URL=<url na webhook>`
 - `GOOGLE_BOOKING_WEBHOOK_TOKEN=<volitelny bearer token>`
 
+## 📰 Blog + Admin sprava obsahu
+
+- Verejna sekce blogu je soucasti homepage (`#blog`).
+- Admin stranka je na `/admin/`.
+- Prihlasovaci heslo: `Bicom-Pisek26`.
+
+V Adminu lze:
+- menit hlavni texty (hero)
+- menit ceník
+- menit kontakt
+- pridavat/upravovat/mazat blog clanky
+
+Dulezite omezeni:
+- aktualni admin uklada data do `localStorage` (v ramci konkretniho prohlizece/zarizeni)
+- je to vhodne jako rychla user-friendly sprava bez backendu
+- pro centralni viceuzivatelskou spravu doporuceno nasledne napojeni na DB/API
+
 ## Lokalni vyvoj
 ```bash
 git clone <repo-url>
