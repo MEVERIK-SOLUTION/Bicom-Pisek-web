@@ -73,26 +73,25 @@ Pro GitHub Actions nastav v repozitari tyto secrets:
 4. Environment variables:
    - pridat API klice a bindingy (viz AI asistent nize)
 
-## AI asistent (GitHub Models)
-- Frontend widget je v `public/index.html`.
-- Backend endpoint je v `functions/api/chat.js`.
-- Endpoint vola GitHub Models Inference API.
+## 🤖 AI Assistant (LIVE ✅)
 
-Nutne environment variables v Cloudflare Pages projektu:
-- `GITHUB_MODELS_API_KEY`
-- `GITHUB_MODEL` (doporuceny default: `azureml/Phi-4-mini-instruct`)
-- `GITHUB_MODELS_ENDPOINT` (default: `https://models.github.ai/inference`)
+The AI chat assistant is now **fully operational** and integrated:
 
-### Doporuceny model z GitHub Marketplace
-Pro tento web doporucuji `azureml/Phi-4-mini-instruct`.
+- **Frontend:** Chat widget button in bottom-right corner of the site
+- **Endpoint:** `/api/chat` (POST with `{"message": "your message"}`)
+- **Backend:** `functions/api/chat.js`
+- **Model:** `gpt-4o-mini` (GitHub Models inference)
+- **Language:** Czech (Česky)
+- **Status:** Live on https://bicom-pisek-web.pages.dev
 
-Proc:
-- je to lehky a rychly model vhodny pro kratke FAQ/konzultacni odpovedi
-- je cenove velmi rozumny a vhodny pro provoz v ramci bezneho predplatneho
-- dobre funguje pro ceske texty v beznych dialogovych scenarich
+The assistant is configured to provide helpful, empathetic responses in Czech for Bicom Pisek business context.
 
-Alternativa s vyssi kvalitou (za vyssi cenu):
-- `azure-openai/gpt-4o-mini`
+### Environment Variables (Configured ✅)
+- `GITHUB_MODELS_API_KEY` = GitHub PAT with models access
+- `GITHUB_MODEL` = `gpt-4o-mini` (currently configured)
+- `GITHUB_MODELS_ENDPOINT` = `https://models.github.ai/inference`
+
+These are set in Cloudflare Pages production environment and automatically deployed.
 
 ## Lokalni vyvoj
 ```bash
