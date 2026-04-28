@@ -1,0 +1,5 @@
+# Local development env vars for wrangler pages dev
+# Copy to .dev.vars and fill in your values.
+GITHUB_MODELS_API_KEY=ghp_or_github_pat_with_models_access
+GITHUB_MODEL=azureml/Phi-4-mini-instruct
+GITHUB_MODELS_ENDPOINT=https://models.github.ai/inference

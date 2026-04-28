@@ -1,0 +1,43 @@
+name: Cloudflare Pages Deploy
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build assets
+        run: npm run build
+
+      - name: Publish to Cloudflare Pages
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            npx wrangler pages deploy public --project-name bicom-pisek-web --branch pr-${{ github.event.pull_request.number }}
+          else
+            npx wrangler pages deploy public --project-name bicom-pisek-web --branch main
+          fi

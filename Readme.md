@@ -49,6 +49,18 @@ Tento repozitar obsahuje frontend prototyp a pripravenou strukturu pro rust do f
 - Manualni deploy pres CLI:
   - `npm run cf:deploy`
 
+## Automaticke buildy a deploye
+- V repozitari je workflow `.github/workflows/cloudflare-pages.yml`.
+- Na `push` do `main` probehne automaticky:
+   - `npm ci`
+   - `npm run build`
+   - `wrangler pages deploy`
+- Na Pull Request se dela preview deploy na branch `pr-<cislo_pr>`.
+
+Pro GitHub Actions nastav v repozitari tyto secrets:
+- `CLOUDFLARE_API_TOKEN`
+- `CLOUDFLARE_ACCOUNT_ID`
+
 ### Doporucene nastaveni v Cloudflare Pages (UI)
 1. Connect to Git:
    - repo: `MEVERIK-SOLUTION/Bicom-Pisek-web`
@@ -59,7 +71,28 @@ Tento repozitar obsahuje frontend prototyp a pripravenou strukturu pro rust do f
 3. Functions:
    - automaticky se vezmou ze slozky `functions/`
 4. Environment variables:
-   - pridat az pri implementaci API (napr. API klice, D1 bindingy)
+   - pridat API klice a bindingy (viz AI asistent nize)
+
+## AI asistent (GitHub Models)
+- Frontend widget je v `public/index.html`.
+- Backend endpoint je v `functions/api/chat.js`.
+- Endpoint vola GitHub Models Inference API.
+
+Nutne environment variables v Cloudflare Pages projektu:
+- `GITHUB_MODELS_API_KEY`
+- `GITHUB_MODEL` (doporuceny default: `azureml/Phi-4-mini-instruct`)
+- `GITHUB_MODELS_ENDPOINT` (default: `https://models.github.ai/inference`)
+
+### Doporuceny model z GitHub Marketplace
+Pro tento web doporucuji `azureml/Phi-4-mini-instruct`.
+
+Proc:
+- je to lehky a rychly model vhodny pro kratke FAQ/konzultacni odpovedi
+- je cenove velmi rozumny a vhodny pro provoz v ramci bezneho predplatneho
+- dobre funguje pro ceske texty v beznych dialogovych scenarich
+
+Alternativa s vyssi kvalitou (za vyssi cenu):
+- `azure-openai/gpt-4o-mini`
 
 ## Lokalni vyvoj
 ```bash
