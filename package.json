@@ -5,7 +5,9 @@
   "scripts": {
     "build:css": "tailwindcss -i ./src/input.css -o ./public/css/styles.css --minify",
     "watch:css": "tailwindcss -i ./src/input.css -o ./public/css/styles.css --watch",
-    "build": "npm run build:css"
+    "build": "npm run build:css",
+    "cf:dev": "npm run build && wrangler pages dev public --compatibility-date=2026-04-28",
+    "cf:deploy": "npm run build && wrangler pages deploy public --project-name bicom-pisek-web"
   },
   "repository": {
     "type": "git",
@@ -19,6 +21,7 @@
   },
   "homepage": "https://github.com/MEVERIK-SOLUTION/Bicom-Pisek-web#readme",
   "devDependencies": {
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "^3.4.17",
+    "wrangler": "^4.13.2"
   }
 }

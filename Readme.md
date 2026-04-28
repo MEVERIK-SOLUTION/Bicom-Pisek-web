@@ -41,6 +41,26 @@ Tento repozitar obsahuje frontend prototyp a pripravenou strukturu pro rust do f
 5. **Backend evoluce**
    - Dodelat `functions/api/book.js` a `functions/api/chat.js` + napojeni na D1.
 
+## Cloudflare setup (pripraveno)
+- `wrangler.toml` je pripraven pro Cloudflare Pages projekt.
+- Endpointy v `functions/api/book.js` a `functions/api/chat.js` uz bezi ve formatu Cloudflare Pages Functions.
+- Lokalni preview celeho projektu (vcetne Functions):
+  - `npm run cf:dev`
+- Manualni deploy pres CLI:
+  - `npm run cf:deploy`
+
+### Doporucene nastaveni v Cloudflare Pages (UI)
+1. Connect to Git:
+   - repo: `MEVERIK-SOLUTION/Bicom-Pisek-web`
+   - production branch: `main`
+2. Build settings:
+   - Build command: `npm run build`
+   - Build output directory: `public`
+3. Functions:
+   - automaticky se vezmou ze slozky `functions/`
+4. Environment variables:
+   - pridat az pri implementaci API (napr. API klice, D1 bindingy)
+
 ## Lokalni vyvoj
 ```bash
 git clone <repo-url>
@@ -60,6 +80,8 @@ Stranku otevri lokalne z `public/index.html` (napr. pres VS Code Live Server).
 - `npm run build:css` - jednorazovy build Tailwind CSS
 - `npm run watch:css` - watch mod pro vyvoj
 - `npm run build` - alias na produkcni CSS build
+- `npm run cf:dev` - lokalni beh Cloudflare Pages + Functions
+- `npm run cf:deploy` - deploy staticke casti pres wrangler CLI
 
 ## TODO do produkce
 - Nahradit placeholder obrazky realnymi fotkami
